@@ -1,4 +1,4 @@
-import SignIn from "@/components/auth/SignIn"
+import SignUp from "@/components/auth/SignUp"
 import { buttonVariants } from "@/components/ui/Button"
 import { cn } from "@/lib/utils"
 import { ChevronLeft } from "lucide-react"
@@ -11,7 +11,7 @@ const Page = () => {
         <Link href="/" className={cn(buttonVariants({ variant: 'ghost' }), 'self-start -mt-20')}>
           <ChevronLeft className="mr-2 h-4 w-4" /> Home
         </Link>
-        <SignIn />
+        <SignUp />
       </div>
     </div>
   )
