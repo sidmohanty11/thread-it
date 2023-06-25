@@ -38,12 +38,37 @@ const CommentsSection = async ({
             if (vote.type === "DOWN") return acc - 1
             return acc
           }, 0)
-          const topLevelCmtVote = topLevelComment.votes.find(vote => vote.userId === session?.user?.id)
+          const topLevelCmtVote = topLevelComment.votes.find(vote => vote.userId === session?.user?.id) ?? null
 
           return <div key={topLevelComment.id} className="flex flex-col">
             <div className="mb-2">
-              <PostComment comment={topLevelComment} />
+              <PostComment
+                postId={postId}
+                comment={topLevelComment}
+                votesAmt={topLevelCmtVotesAmt}
+                currentVote={topLevelCmtVote}
+              />
             </div>
+
+            {topLevelComment.replies.sort((a, b) => {
+              return b.votes.length - a.votes.length
+            }).map(reply => {
+              const replyVotesAmt = reply.votes.reduce((acc, vote) => {
+                if (vote.type === "UP") return acc + 1
+                if (vote.type === "DOWN") return acc - 1
+                return acc
+              }, 0)
+              const replyVote = reply.votes.find(vote => vote.userId === session?.user?.id) ?? null
+
+              return <div key={reply.id} className="ml-2 py-2 pl-4 border-l-2 border-zinc-200">
+                <PostComment
+                  postId={postId}
+                  comment={reply}
+                  votesAmt={replyVotesAmt}
+                  currentVote={replyVote}
+                />
+              </div>
+            })}
           </div>
         })}
       </div>
