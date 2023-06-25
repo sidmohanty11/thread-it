@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 import { Button } from '../ui/Button';
+import { Textarea } from '../ui/textarea';
 import { useMutation } from '@tanstack/react-query';
 import { CommentRequest } from '@/lib/validators/comment';
 import axios, { AxiosError } from 'axios';
