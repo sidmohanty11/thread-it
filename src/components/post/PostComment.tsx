@@ -24,7 +24,7 @@ type ExtendedComment = Comment & {
 interface PostCommentProps {
   comment: ExtendedComment;
   votesAmt: number;
-  currentVote: CommentVote | null;
+  currentVote: CommentVote | undefined;
   postId: string;
 }
 

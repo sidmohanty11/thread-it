@@ -38,7 +38,7 @@ const CommentsSection = async ({
             if (vote.type === "DOWN") return acc - 1
             return acc
           }, 0)
-          const topLevelCmtVote = topLevelComment.votes.find(vote => vote.userId === session?.user?.id) ?? null
+          const topLevelCmtVote = topLevelComment.votes.find(vote => vote.userId === session?.user?.id)
 
           return <div key={topLevelComment.id} className="flex flex-col">
             <div className="mb-2">
@@ -58,7 +58,7 @@ const CommentsSection = async ({
                 if (vote.type === "DOWN") return acc - 1
                 return acc
               }, 0)
-              const replyVote = reply.votes.find(vote => vote.userId === session?.user?.id) ?? null
+              const replyVote = reply.votes.find(vote => vote.userId === session?.user?.id)
 
               return <div key={reply.id} className="ml-2 py-2 pl-4 border-l-2 border-zinc-200">
                 <PostComment
