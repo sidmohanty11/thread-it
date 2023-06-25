@@ -1,1 +1,1 @@
-export const INFINITE_SCROLLING_PAGE_SIZE = 2;
+export const INFINITE_SCROLLING_PAGE_SIZE = 6;
