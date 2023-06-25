@@ -44,6 +44,9 @@ const CreateCommunityPage = () => {
         })
       }
     },
+    onSuccess: (data) => {
+      router.push(`/r/${data}`)
+    }
   })
 
   return (
