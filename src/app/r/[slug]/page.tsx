@@ -1,4 +1,5 @@
 import MiniCreatePost from "@/components/post/MiniCreatePost"
+import PostFeed from "@/components/post/PostFeed"
 import { getAuthSession } from "@/lib/auth"
 import { INFINITE_SCROLLING_PAGE_SIZE } from "@/lib/config"
 import { db } from "@/lib/db"
@@ -25,7 +26,10 @@ const CommunityPage = async ({ params }: PageProps) => {
           comments: true,
           votes: true,
           subreddit: true,
-        }
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
       },
     },
     take: INFINITE_SCROLLING_PAGE_SIZE,
@@ -41,6 +45,7 @@ const CommunityPage = async ({ params }: PageProps) => {
         r/{subreddit.name}
       </h1>
       <MiniCreatePost session={session} />
+      <PostFeed subredditName={subreddit.name} initialPosts={subreddit.posts} />
     </div>
   )
 }
